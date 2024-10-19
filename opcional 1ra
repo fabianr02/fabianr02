@@ -1,0 +1,28 @@
+#include <iostream>
+#include <ctime>
+#include <cmath>
+
+using namespace std;
+int main(){
+  
+  int dia_1, mes_1, año_1;
+  int dia_2, mes_2, año_2;
+  cout<< "ingrese la fecha 1 dd/mm/yyyy: ";
+  cin>> dia_1>> mes_1>> año_1;
+
+  cout<< "ingrese la fecha 2 dd/mm/yyyy: ";
+  cin>> dia_2 >> mes_2 >> año_2;
+
+  tm fecha_1= {0,0,0, dia_1, mes_1-1 ,año_1-1900};
+  tm fecha_2= {0,0,0, dia_2, mes_2-1, año_2-1900};
+
+  time_t tiempo_1= mktime(&fecha_1);
+  time_t tiempo_2= mktime(&fecha_2);
+
+  int diferencia=
+  abs(difftime(tiempo_1, tiempo_2) / (60*60*24));
+
+  cout<< "la diferencia en dias es: "<< diferencia<< endl;
+  
+  return 0;
+}
